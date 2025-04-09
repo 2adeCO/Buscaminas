@@ -1,0 +1,45 @@
+﻿<Window x:Class="Buscaminas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Buscaminas"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="7*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="6*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*"></RowDefinition>
+                <RowDefinition Height="25*"></RowDefinition>
+                <RowDefinition Height="25*"></RowDefinition>
+                <RowDefinition Height="25*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label FontSize="10" Content="Columnas:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right"></Label>
+            <Label FontSize="10" Content="Filas:" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right"></Label>
+            <Label FontSize="10" Content="Minas:" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right"></Label>
+                
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="cols"></TextBox>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="rows"></TextBox>
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="mines"></TextBox>
+            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Deploy Mines!" MouseRightButtonDown="DeployMines" Click="DeployMines"></Button>
+
+        </Grid>
+        <Grid x:Name="minefield"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="DarkOliveGreen" SizeChanged="">
+            
+        </Grid>
+
+    </Grid>
+</Window>
