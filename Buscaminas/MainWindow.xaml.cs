@@ -261,6 +261,35 @@ namespace Buscaminas
         }
         public void ChangeScreen(object sender, EventArgs e)
         {
+            if(sender is Grid)
+            {
+                Grid myGrid = (Grid)sender;
+                //Columnas 2
+                //Filas 4
+                //100x100
+
+                double width = myGrid.Width / currentCols;
+                double height = myGrid.Height / currentRows;
+
+                if(width > height)
+                {
+                    myGrid.Margin = new Thickness(height / width / 2, 0, height / width / 2, 0);
+                }
+                else
+                {
+                    if(width < height)
+                    {
+                        myGrid.Margin = new Thickness((width/ height) / 2, 0, width/ height/ 2, 0);
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+                
+
+            }
 
         }
     }
