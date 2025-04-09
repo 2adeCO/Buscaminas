@@ -267,27 +267,36 @@ namespace Buscaminas
                 //Columnas 2
                 //Filas 4
                 //100x100
+                Debug.WriteLine("Changing size detected !");
+                double width = myGrid.ActualWidth / currentCols;
+                double height = myGrid.ActualHeight / currentRows;
 
-                double width = myGrid.Width / currentCols;
-                double height = myGrid.Height / currentRows;
-
-                if(width > height)
+                double desiredSize = Math.Min(width, height);
+                if (desiredSize > 0)
                 {
-                    myGrid.Margin = new Thickness(height / width / 2, 0, height / width / 2, 0);
+                    for (int i = 0; i < currentRows; i++)
+                    {
+                        myGrid.RowDefinitions.ToArray()[i].Height = new GridLength(desiredSize);
+                    }
+                    for (int i = 0; i < currentCols; i++)
+                    {
+                        myGrid.ColumnDefinitions.ToArray()[i].Width = new GridLength(desiredSize);
+                    }
                 }
                 else
                 {
-                    if(width < height)
+                    Debug.WriteLine("Size too small !");
+                    for (int i = 0; i < currentRows; i++)
                     {
-                        myGrid.Margin = new Thickness((width/ height) / 2, 0, width/ height/ 2, 0);
-
+                        myGrid.RowDefinitions.ToArray()[i] = new RowDefinition(1, GridUnitType.Star);
                     }
-                    else
+                    for (int i = 0; i < currentCols; i++)
                     {
-
+                        myGrid.ColumnDefinitions.ToArray()[i] = new ColumnDefinition(1, GridUnitType.Star);
                     }
                 }
-                
+
+
 
             }
 

@@ -37,7 +37,7 @@
             <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Deploy Mines!" MouseRightButtonDown="DeployMines" Click="DeployMines"></Button>
 
         </Grid>
-        <Grid x:Name="minefield"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="DarkOliveGreen" SizeChanged="">
+        <Grid x:Name="minefield"  Grid.Row="1" Grid.Column="0" Background="DarkOliveGreen" SizeChanged="ChangeScreen">
             
         </Grid>
 
