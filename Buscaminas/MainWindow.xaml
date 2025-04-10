@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Buscaminas"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="700">
+        Title="MainWindow" Height="700" Width="700" SizeChanged="ChangeScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition Height="7*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" Grid.Row="0">
@@ -37,9 +37,8 @@
             <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Deploy Mines!" MouseRightButtonDown="DeployMines" Click="DeployMines"></Button>
 
         </Grid>
-        <Grid x:Name="minefield"  Grid.Row="1" Grid.Column="0" Background="DarkOliveGreen" SizeChanged="ChangeScreen">
-            
-        </Grid>
+            <Grid x:Name="minefield"  Grid.Row="1" Grid.Column="0"  Background="DarkOliveGreen" Margin="0">
 
+            </Grid>
     </Grid>
 </Window>

@@ -240,7 +240,7 @@ namespace Buscaminas
                     Debug.WriteLine(i +""+ j + " " + value);
                     MineArray[i, j].SetValue(value);
                     value = 0;
-
+                    ChangeScreen(null,null);
                 }
             }
         }
@@ -261,26 +261,25 @@ namespace Buscaminas
         }
         public void ChangeScreen(object sender, EventArgs e)
         {
-            if(sender is Grid)
-            {
-                Grid myGrid = (Grid)sender;
                 //Columnas 2
                 //Filas 4
                 //100x100
                 Debug.WriteLine("Changing size detected !");
-                double width = myGrid.ActualWidth / currentCols;
-                double height = myGrid.ActualHeight / currentRows;
+                double width = this.ActualWidth / currentCols;
+                double height = ((this.ActualHeight / 10) * 7) / currentRows;
 
                 double desiredSize = Math.Min(width, height);
-                if (desiredSize > 0)
+                
+                Debug.WriteLine(desiredSize);
+                if (desiredSize * currentCols <= this.ActualWidth && desiredSize * currentRows <= ((this.ActualHeight / 10) * 7))
                 {
                     for (int i = 0; i < currentRows; i++)
                     {
-                        myGrid.RowDefinitions.ToArray()[i].Height = new GridLength(desiredSize);
+                        minefield.RowDefinitions[i].Height = new GridLength(desiredSize);
                     }
                     for (int i = 0; i < currentCols; i++)
                     {
-                        myGrid.ColumnDefinitions.ToArray()[i].Width = new GridLength(desiredSize);
+                        minefield.ColumnDefinitions[i].Width = new GridLength(desiredSize);
                     }
                 }
                 else
@@ -288,17 +287,19 @@ namespace Buscaminas
                     Debug.WriteLine("Size too small !");
                     for (int i = 0; i < currentRows; i++)
                     {
-                        myGrid.RowDefinitions.ToArray()[i] = new RowDefinition(1, GridUnitType.Star);
-                    }
-                    for (int i = 0; i < currentCols; i++)
-                    {
-                        myGrid.ColumnDefinitions.ToArray()[i] = new ColumnDefinition(1, GridUnitType.Star);
-                    }
+                        minefield.RowDefinitions[i] = new RowDefinition(){Height = new GridLength(1, GridUnitType.Star)};
+                    Debug.WriteLine("Row count made: " + i);
                 }
-
-
-
+                for (int i = 0; i < currentCols; i++)
+                    {
+                        minefield.ColumnDefinitions[i] = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
+                    Debug.WriteLine("Col count made: " + i);
+                }
             }
+
+
+
+         
 
         }
     }
