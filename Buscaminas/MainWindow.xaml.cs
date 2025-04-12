@@ -228,22 +228,22 @@ namespace Buscaminas
             }
 
 
-            minefield.Children.Clear();
-            minefield.RowDefinitions.Clear();
-            minefield.ColumnDefinitions.Clear();
+            MineField.Children.Clear();
+            MineField.RowDefinitions.Clear();
+            MineField.ColumnDefinitions.Clear();
 
             ButtonArray = new Button[currentCols, currentRows];
             MineArray = new MinePosition[currentCols,currentRows];
 
             for (int i = 0; i < currentCols; i++)
             {
-                minefield.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+                MineField.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
                 Debug.WriteLine(i + " col"); 
                 
             }
             for (int j = 0; j < currentRows; j++)
             {
-                minefield.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+                MineField.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
                 Debug.WriteLine(j + " row");   
             }
             for (int i = 0; i < currentCols; i++)
@@ -256,7 +256,7 @@ namespace Buscaminas
                     button.Background = Brushes.Gray;
                     Grid.SetRow(button, j);
                     Grid.SetColumn(button, i);
-                    minefield.Children.Add(button);
+                    MineField.Children.Add(button);
                     ButtonArray[i,j] = button;
                 }
             }
@@ -368,14 +368,14 @@ namespace Buscaminas
                 //Columnas 2
                 //Filas 4
                 //100x100
-                if(minefield.ActualHeight == 0 || minefield.ActualWidth == 0)
+                if(MineField.ActualHeight == 0 || MineField.ActualWidth == 0)
             {
                 Debug.WriteLine("Faulty resize skipped !");
                 return;
             }
                 Debug.WriteLine("Changing size detected !");
-                double width = minefield.ActualWidth / currentCols;
-                double height = minefield.ActualHeight / currentRows;
+                double width = MineField.ActualWidth / currentCols;
+                double height = MineField.ActualHeight / currentRows;
 
                 double desiredSize = Math.Min(width, height);
 
@@ -386,11 +386,11 @@ namespace Buscaminas
                     Debug.WriteLine("Establishing desired size !");
                     for (int i = 0; i < currentRows; i++)
                     {
-                        minefield.RowDefinitions[i].Height = new GridLength(desiredSize);
+                        MineField.RowDefinitions[i].Height = new GridLength(desiredSize);
                     }
                     for (int i = 0; i < currentCols; i++)
                     {
-                        minefield.ColumnDefinitions[i].Width = new GridLength(desiredSize);
+                        MineField.ColumnDefinitions[i].Width = new GridLength(desiredSize);
                     }
                 }
                 else
@@ -398,12 +398,12 @@ namespace Buscaminas
                     Debug.WriteLine("Size too small !");
                     for (int i = 0; i < currentRows; i++)
                     {
-                        minefield.RowDefinitions[i] = new RowDefinition(){Height = new GridLength(1, GridUnitType.Star)};
+                        MineField.RowDefinitions[i] = new RowDefinition(){Height = new GridLength(1, GridUnitType.Star)};
                         Debug.WriteLine("Row count made: " + i);
                     }
                 for (int i = 0; i < currentCols; i++)
                     {
-                        minefield.ColumnDefinitions[i] = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
+                        MineField.ColumnDefinitions[i] = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
                         Debug.WriteLine("Col count made: " + i);
                     }
                     }
