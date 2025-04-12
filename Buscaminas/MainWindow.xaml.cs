@@ -74,7 +74,8 @@ namespace Buscaminas
             if (!IsPopped())
             {
                 button.Background = Brushes.Gray;
-            }
+                button.Content = "";
+            } else
             {
                 switch (GetValue())
                 {
