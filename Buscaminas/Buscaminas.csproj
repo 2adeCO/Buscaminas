@@ -6,6 +6,22 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>img\flagged.ico</ApplicationIcon>
+    <SignAssembly>False</SignAssembly>
+    <AssemblyName>$(MSBuildProjectName) by Devsco</AssemblyName>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_")) by Devsco</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="flagged.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="img\flagged.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\flagged.png" />
+  </ItemGroup>
 
 </Project>
