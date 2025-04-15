@@ -6,39 +6,54 @@
         xmlns:local="clr-namespace:Buscaminas"
         mc:Ignorable="d"
         Title="Buscaminas :)" Height="700" Width="700" SizeChanged="ChangeScreen">
+    <!--
+    Grid definitions for top section(Columns, rows and mines textboxes, and DeployMines! button) and bottom section(Minefield)
+    The top section is 3/10 of the window height and the bottom section is 7/10 of the window height
+    -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition Height="7*"></RowDefinition>
         </Grid.RowDefinitions>
+        <!--Width is the entire window width in all sections--> 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
+        
+        <!--
+        Top section has a grid with 2 columns and 4 rows
+        It consists of 3 labels, 3 textboxes and a button
+        Each row has 1/4 height on the top section
+        While the first column has 1/4 of the width and the second column has 3/4 of the width
+        
+        -->
         <Grid Grid.Column="0" Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="6*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="25*"></RowDefinition>
-                <RowDefinition Height="25*"></RowDefinition>
-                <RowDefinition Height="25*"></RowDefinition>
-                <RowDefinition Height="25*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
-
+            
+            <!--
+            Each label is in the first column and each textbox is in the second column, aligning the labels to the left and the textboxes to the right
+            The button occupies both columns in the last row with the span
+            -->
             <Label FontSize="14" Content="Columnas:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right"></Label>
             <Label FontSize="14" Content="Filas:" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right"></Label>
             <Label FontSize="14" Content="Minas:" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right"></Label>
                 
-            <TextBox Grid.Row="0" Grid.Column="1" x:Name="cols"></TextBox>
-            <TextBox Grid.Row="1" Grid.Column="1" x:Name="rows"></TextBox>
-            <TextBox Grid.Row="2" Grid.Column="1" x:Name="mines"></TextBox>
-            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Deploy Mines!" MouseRightButtonDown="DeployMines" Click="DeployMines"></Button>
-
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="Cols"></TextBox>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="Rows"></TextBox>
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="Mines"></TextBox>
+            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Deploy Mines!" Click="DeployMines"></Button>
+        <!--Bottom section with MineField, an empty canvas to paint our mines with the data from the textboxes-->
         </Grid>
-            <Grid x:Name="MineField"  Grid.Row="1" Grid.Column="0"  Background="DarkOliveGreen" Margin="0">
-
-            </Grid>
+        <Grid x:Name="MineField"  Grid.Row="1" Grid.Column="0"  Background="DarkOliveGreen" Margin="0">
+        </Grid>
     </Grid>
 </Window>
